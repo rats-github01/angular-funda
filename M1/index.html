@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html ng-app>
-<body ng-init="title='Angular'">
+<body ng-init="title='Angular'; items=[0,1,2,3,4]">
     Hello {{title}}
+
+    <div ng-repeat="item in items">
+        {{item}}
+    </div>
     <script src="../bower_components/angular/angular.js"></script>
+
 </body>
 </html>
