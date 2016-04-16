@@ -3,9 +3,13 @@
 <body ng-init="title='Angular'; items=[0,1,2,3,4]">
     Hello {{title}}
 
-    <div ng-repeat="item in items">
+    <div ng-repeat="item in items" ng-hide="hide">
         {{item}}
     </div>
+
+    <button ng-click="hide=!hide">Toggle hide/show</button>
+    <button ng-click="items[items.length]=items.length">Add item to list</button>
+
     <script src="../bower_components/angular/angular.js"></script>
 
 </body>
