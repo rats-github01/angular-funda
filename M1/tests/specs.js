@@ -1,7 +1,3 @@
-/**
- * Created by hari on 4/16/2016.
- */
-
 describe('Hello World', function() {
 
     it('should increment a value by one', function() {
