@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html ng-app="MyApp">
-<body ng-controller="HomeCtrl">
+<head>
+    <title>This is landing page..</title>
+</head>
+<body >
 
-    <h2>{{ title }}</h2>
-
+    <div ng-view></div>
+    <a href="#/info">Goto info Page.</a>
     <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
     <script src="./app.js"></script>
 </body>
 </html>
