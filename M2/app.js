@@ -1,5 +1,6 @@
-/**
- * Created by hari on 4/17/2016.
- */
 angular.module('MyApp', [])
-    .constant('VERSION', '1.0');
+    .constant('VERSION', '1.0')
+    .run(['VERSION', '$rootScope',function(VERSION, $rootScope) {
+        alert('$rootScope : ' + $rootScope);
+        alert('Version: ' + VERSION);
+    }]);
