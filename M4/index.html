@@ -118,10 +118,43 @@
             <button class="btn btn-disabled" ng-click="title='null'">[Set title value to null]</button>
         </nav>
 
+        <p>
+            <span ng-class="{'label-success':focus}" class="label label-default">Focus!</span>
+            <span ng-class="{'label-warning':!focus}" class="label label-default">Blur!</span>
+        </p>
+        </nav>
+
+        <p>
+            <input
+                ng-model="title"
+                class="form-control"
+                ng-focus="focus=true"
+                ng-blur="focus=false"
+                placeholder="Enter a title" />
+        </p>
+
         <div class="panel">
             <p> Title is : <strong>{{title.length?title:'Title not defined'}}</strong></p>
         </div>
 
+    </section>
+
+    <section>
+        <h2>ngSubmit</h2>
+        <form  name="myForm" ng-submit="submit()" ng-controller="FormCtrl" novalidate>
+            <div class="form-group">
+                <label>Name:</label>
+                <input type="text" ng-model="name" required/>
+            </div>
+
+            <div class="form-group">
+                <label>Age:</label>
+                <select ng-model="age" ng-options="age for age in generateAges()">
+
+                </select>
+            </div>
+            <input type="submit"/>
+        </form>
     </section>
 
     <script src="../bower_components/angular/angular.js"></script>
