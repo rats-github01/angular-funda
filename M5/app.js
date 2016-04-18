@@ -1,15 +1,6 @@
 angular.module('MyApp', [])
 
-    .controller('ListCtrl', ['$scope', '$http', function($scope, $http) {
-        $http.get('./users.json').success(function(users) {
-           $scope.users = users;
-        });
-    }]);
-
-
-/*
-angular.module('MyApp', [])
-    .factory('userService', function() {
+    .factory('usersService', function() {
         var user;
         return {
             setCurrentUser: function(current) {
@@ -20,10 +11,23 @@ angular.module('MyApp', [])
             }
         };
     })
-    .controller('DetailCtrl', ['$scope', 'userService', function($scope, userService) {
-        //You can use userService over here!
-        console.log(userService.getCurrentUser());
+
+    .controller('ListCtrl', ['$scope', '$rootScope', '$http', 'usersService',
+        function($scope, $rootScope, $http, usersService) {
+        $http.get('./users.json').success(function(users) {
+           $scope.users = users;
+        });
+
+        $scope.selectUser = function(user) {
+          //alert('in selectUser func' + user.first_name);
+          usersService.setCurrentUser(user);
+            $rootScope.$broadcast('userChanged', user);
+        };
     }])
-    .controller('InfoCtrl', ['$scope', 'userService', function($scope, userService) {
-        userService.setCurrentUser('us001');
-    }])*/
+
+    .controller('DetailCtrl', ['$scope', '$rootScope', 'usersService',
+        function($scope, $rootScope, usersService) {
+        $scope.$on('userChanged', function(event, user) {
+           $scope.currentUser = user;//usersService.getCurrentUser();
+        });
+    }]);
