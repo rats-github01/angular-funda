@@ -3,9 +3,18 @@
 <head>
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/shared.css">
-    <link rel="stylesheet" href="./css/styles.css">
+    <!--<link rel="stylesheet" href="./css/styles.css">-->
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+
+    <div class="row">
+        <div class="left-col" class="page-list" ng-controller="ListCtrl">
+            <a href="" ng-repeat="user in users track by user.id" ng-click="selectUser(user)" class="user-listing">
+                {{user.first_name}} {{user.last_name}}
+            </a>
+        </div>
+    </div>
 
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-route/angular-route.js"></script>
